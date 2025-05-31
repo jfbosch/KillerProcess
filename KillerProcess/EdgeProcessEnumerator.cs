@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Management;
 
 // Responsible for enumerating Edge renderer processes
-class EdgeProcessEnumerator
+public class EdgeProcessEnumerator
 {
 	public static Process[] GetEdgeRendererProcesses()
 	{

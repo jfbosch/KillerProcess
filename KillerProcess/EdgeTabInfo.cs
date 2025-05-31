@@ -1,5 +1,5 @@
 // Data class for Edge tab info
-class EdgeTabInfo
+public class EdgeTabInfo
 {
 	public int ProcessId { get; }
 	public double CpuPercent { get; }

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 // Responsible for sampling CPU usage
-class CpuUsageSampler
+public class CpuUsageSampler
 {
 	private readonly int _cpuCount;
 	private readonly int _sampleMs;
