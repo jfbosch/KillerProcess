@@ -1,5 +1,4 @@
-// Enum for process filter mode
-public enum ProcessFilterMode
+﻿public enum ProcessFilterMode
 {
 	EdgeOnly,
 	All

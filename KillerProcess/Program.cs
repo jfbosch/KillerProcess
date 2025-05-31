@@ -54,14 +54,14 @@
 			Console.WriteLine(filterMode == ProcessFilterMode.EdgeOnly
 				 ? $"Listing Edge renderer processes (CPU > {threshold}%)\n"
 				 : $"Listing all processes (CPU > {threshold}%)\n");
-			var monitor = new EdgeTabMonitor(threshold, filterMode);
-			var matchingTabs = await monitor.GetMatchingTabsAsync();
-			foreach (var info in matchingTabs)
+			var monitor = new ProcessMonitor(threshold, filterMode);
+			var matchingProcesses = await monitor.GetMatchingProcessesAsync();
+			foreach (var info in matchingProcesses)
 			{
 				Console.WriteLine($"PID {info.ProcessId,5}  {info.CpuPercent,5:F1}%  {info.WindowTitle}");
 			}
 			Console.WriteLine();
-			Console.WriteLine($"Total matching processes: {matchingTabs.Count}");
+			Console.WriteLine($"Total matching processes: {matchingProcesses.Count}");
 			Console.WriteLine();
 			Console.WriteLine("Options:");
 			Console.WriteLine("  r   - Refresh the list");
@@ -82,8 +82,8 @@
 			}
 			if (input == "k")
 			{
-				var killed = new List<EdgeTabInfo>();
-				foreach (var info in matchingTabs)
+				var killed = new List<ProcessInfo>();
+				foreach (var info in matchingProcesses)
 				{
 					try
 					{
