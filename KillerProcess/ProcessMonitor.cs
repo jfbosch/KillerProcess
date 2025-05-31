@@ -16,9 +16,15 @@ class ProcessMonitor
 
 	public async Task MonitorAsync()
 	{
-		var processes = _filterMode == ProcessFilterMode.EdgeOnly
-			? EdgeProcessEnumerator.GetEdgeRendererProcesses()
-			: Process.GetProcesses();
+		Process[] processes;
+		if (_filterMode == ProcessFilterMode.EdgeOnly)
+		{
+			processes = await EdgeProcessEnumerator.GetEdgeRendererProcessesAsync();
+		}
+		else
+		{
+			processes = Process.GetProcesses();
+		}
 		var tasks = new List<Task<ProcessInfo?>>();
 		foreach (var p in processes)
 		{
@@ -49,7 +55,7 @@ class ProcessMonitor
 		Process[] processes;
 		if (_filterMode == ProcessFilterMode.EdgeOnly)
 		{
-			processes = EdgeProcessEnumerator.GetEdgeRendererProcesses();
+			processes = await EdgeProcessEnumerator.GetEdgeRendererProcessesAsync();
 		}
 		else
 		{
